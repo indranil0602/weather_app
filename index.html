@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather report</title>
+        <link rel="shortcut icon" href="http://openweathermap.org/img/wn/02d@4x.png">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script type="text/javascript" src="./src/country.json"></script>
+        <script type='text/javascript' src='./scripts/config.js'></script>
+        <script type="text/javascript" src="./scripts/main.js"></script>
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    </head>
+    <body onload="getLocation()">
+        <header>
+            <h2>Weather</h2>
+        </header>
+        
+        <div class="tab">
+            <button class="tablinks" onclick="getLocation()">Home</button>
+            <button class="tablinks" onclick="openCity(event, 'Place')">Place</button>
+            <button class="tablinks" onclick="openCity(event, 'Co')">Co-ordinates</button>
+            <button class="tablinks" onclick="refreshData()">Refresh</button>
+        </div>
+        
+        <div id="Place" class="formcontent">
+            <input type="text" id="loc" class="input" placeholder="location">
+            <button type="button" class="btn btn-primary" onclick="fetchLocation()">Submit</button>
+        </div>
+        <div id="Co" class="formcontent">
+            <input type="text" id="co-lat" class="input" placeholder="latitude">
+            <input type="text" id="co-lon" class="input" placeholder="longitude">
+            <button type="button" class="btn btn-primary" onclick="fetchCoordinate()">Submit</button>
+        </div>
+
+        <section class="grid-container" id="container">
+            <div id="grid-item" class="grid-item">
+                <table class="card">
+                    <tr>
+                        <td id="place" class="place"></td>
+                    </tr>
+                    <tr>
+                        <td id="country"></td>
+                        <td id="dt"></td>
+                    </tr>
+                    <tr>
+                        <td id="lat"></td>
+                        <td id="lat_val"></td>
+                    </tr>
+                    <tr>
+                        <td id="lon"></td>
+                        <td id="lon_val"></td>
+                    </tr>
+                    
+                    <tr id="main"></tr>
+                    <tr>
+                        <td id="description"></td>
+                        <td ><img id="image_icon"></td>
+                    </tr>
+                    <tr>
+                        <td id="clouds_all"></td>
+                        <td id="clouds_all_val"></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="grid-item" class="grid-item">
+                <table class="card">
+                    <tr id="temp" class="temp"></tr>
+                    <tr>
+                        <td id="feels_like"></td>
+                        <td id="feels_like_val"></td>
+                    </tr>
+                    <tr>
+                        <td id="temp_min"></td>
+                        <td id="temp_max"></td>
+                    </tr>
+                    <tr>
+                        <td id="humidity"></td>
+                        <td id="humidity_val"></td>
+                    </tr>
+                    <tr>
+                        <td id="rain_1hr"></td>
+                        <td id="rain_1hr_val"></td>
+                    </tr>
+                    <tr>
+                        <td id="snow_1hr"></td>
+                        <td id="snow_1hr_val"></td>
+                    </tr>
+                    <tr>
+                        <td id="visibility"></td>
+                        <td id="visibility_val"></td>
+                    </tr>
+                    <tr>
+                        <td id="sunrise"></td>
+                        <td id="sunset"></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="grid-item" class="grid-item">
+                <table class="card" id="windCard">        
+                    <tr id="wind" class="wind"></tr>
+                    <tr>
+                        <td id="speed"></td>
+                        <td id="speed_val"></td>
+                    </tr>
+                    <tr>
+                        <td id="deg"></td>
+                        <td id="deg_val"></td>
+                    </tr>
+                    <tr> 
+                        <td id="gust"></td>
+                        <td id="gust_val"></td>
+                    </tr>
+                    <tr> 
+                        <td id="pressure"></td>
+                        <td id="pressure_val"></td>
+                    </tr>
+                    <tr> 
+                        <td id="sea_level"></td>
+                        <td id="sea_level_val"></td>
+                    </tr>
+                    <tr> 
+                        <td id="grnd_level"></td>
+                        <td id="grnd_level_val"></td>
+                    </tr>                  
+                </table>
+            </div>
+        </section>
+
+        <section class="err_msg" id="err_msg"></section>
+        
+        <footer class="footer"></footer>
+    </body>
+</html>
